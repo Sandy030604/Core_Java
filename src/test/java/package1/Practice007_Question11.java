@@ -20,8 +20,8 @@ public class Practice007_Question11 {
 		LocalDate currentdate=LocalDate.now();
 		Period finding=accepteddate.until(currentdate);
 		
-		System.out.println("Days Difference"+finding.get(ChronoUnit.DAYS));
-		System.out.println("Month Difference"+finding.get(ChronoUnit.MONTHS));
-		System.out.println("Years Difference:"+finding.get(ChronoUnit.YEARS));
+		System.out.println("Days Difference"+finding.getDays());
+		System.out.println("Month Difference"+finding.getMonths());
+		System.out.println("Years Difference:"+finding.getYears());
 	}
 }
