@@ -1,6 +1,6 @@
 package package1;
 
-public class TC001_Stringsk {
+public class TC010_Stringsk {
 	public static void main(String args[])
 	{
 		String str1="Santhosh";
@@ -17,6 +17,12 @@ public class TC001_Stringsk {
 		System.out.println("Index of a: "+str3.indexOf("a"));
 		
 		System.out.println("Substring: "+str3.substring(10,20));
+		
+		System.out.println("value of: "+str3.valueOf(30));
+		
+		System.out.println("Empty: "+str3.isEmpty());
+		
+
 		
 	}
 
