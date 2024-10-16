@@ -1,4 +1,4 @@
-package learningpackage;
+package package1;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -68,7 +68,7 @@ class Person2{
 	
 }
 
-public class Learning7Lab1Q15{
+public class Practice013_Lab1Q15{
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

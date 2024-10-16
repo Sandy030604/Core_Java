@@ -74,7 +74,7 @@ class CurrentAccount extends Account{
 		}
 	}
 }
-public class Practice009_InheritenceQ2 {
+public class Practice009_Lab2Q2 {
 	public static void main(String args[])
 	{
 		SavingsAccount accForSmith = new SavingsAccount(Account.generateAccNumber(),

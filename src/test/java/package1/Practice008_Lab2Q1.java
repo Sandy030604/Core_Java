@@ -91,7 +91,7 @@ class Account extends Person{
 	
 	
 }
-public class Practice008_InheritanceQ1 {
+public class Practice008_Lab2Q1 {
 
 	public static void main(String args[])
 	{
