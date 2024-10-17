@@ -1,12 +1,23 @@
 package package1;
 
-class Person6{
+class InvalidAgeException extends Exception{
+	public InvalidAgeException()
+	{
+		
+		System.out.println("Bye");
+	}
+}
+class Person0{
 	private String name;
 	private int age;
 	
-	public Person6(String name, int age) {
+	public Person0(String name, int age) throws InvalidAgeException {
 		super();
 		this.name = name;
+		if(age<=15)
+		{
+			throw new InvalidAgeException();
+		}
 		this.age = age;
 	}
 	public String getName() {
@@ -18,13 +29,16 @@ class Person6{
 	public int getAge() {
 		return age;
 	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setAge(int age) throws InvalidAgeException {
+		if(age <= 15)
+		{
+			throw new InvalidAgeException();
+		}
 	}
 	
 	
 }
-class Account extends Person6{
+class Accountzz extends Person0{
 	private long accNum;
 	private double balance;
 	public long getAccNum() {
@@ -43,7 +57,7 @@ class Account extends Person6{
 		long number = (long) (Math.random() * 1000000000000L);
         return number;
     }
-	public Account(String name,int age,long accNum, double balance) {
+	public Accountzz(String name,int age,long accNum, double balance) throws InvalidAgeException{
 		super(name,age);
 		this.accNum = accNum;
 		this.balance = balance;
@@ -77,17 +91,22 @@ class Account extends Person6{
 	
 }
 
-public class Practice008_Lab2Q1 {
+public class Practice016Lab3Q2 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Account Santhosh=new Account("Santhosh",21,Account.generateAccNumber(),2000.00);
-		Account Krishnan=new Account("Kathy",21,Account.generateAccNumber(),3000.00);
+		try {
+		Accountzz Santhosh=new Accountzz("Santhosh",14,Accountzz.generateAccNumber(),2000.00);
+		Accountzz Krishnan=new Accountzz("Kathy",21,Accountzz.generateAccNumber(),3000.00);
 		Santhosh.depositAmount(2000);
 		Krishnan.withdrawAmount(2000);
 		System.out.println(Santhosh.toString());
 		System.out.println(Krishnan.toString());
-		
+		}
+		catch(InvalidAgeException e)
+		{
+			System.out.println(e.getMessage());
+		}
 		
 	}
 

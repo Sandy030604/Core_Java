@@ -1,6 +1,6 @@
 package package1;
 
-public class TC_20Exception {
+public class TC020_Exception {
 
 	public static void main(String[] args) {
 //		String str=null;

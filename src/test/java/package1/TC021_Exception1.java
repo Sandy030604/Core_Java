@@ -1,6 +1,6 @@
 package package1;
 
-public class TC21Exception1 {
+public class TC021_Exception1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
