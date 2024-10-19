@@ -48,6 +48,9 @@ class Account extends Person6{
 		this.accNum = accNum;
 		this.balance = balance;
 	}
+	public Account(long accNumber, double balance2, Person6 accHolder) {
+		// TODO Auto-generated constructor stub
+	}
 	public void printDetails() {
         System.out.println("Name: " + getName());
         System.out.println("Age: " + getAge());
