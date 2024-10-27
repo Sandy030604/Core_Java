@@ -67,7 +67,7 @@ public class Learning9Lab2Q2 {
 		currentAccount.withdrawAmount(600);
         System.out.println("Current Account Initial Balance: " + currentAccount.getBalance());
         
-        System.out.println("Enter the Amount You Want to Withdraw in considering the overdraft limit:")
+        System.out.println("Enter the Amount You Want to Withdraw in considering the overdraft limit:");
         boolean result = currentAccount.canWithdraw(sk.nextInt());  // This checks with boolean logic
         System.out.println("Withdrawal successful? " + result);
 
