@@ -10,19 +10,19 @@ public class Amazon_pom2 {
     {
         driverssk=driver;
     }
-    By amazonuser=By.xpath("//*[@id='ap_email']");
-    By amazonpassword=By.xpath("//*[@id='ap_password']");
+//    By amazonuser=By.xpath("//*[@id='ap_email']");
+//    By amazonpassword=By.xpath("//*[@id='ap_password']");
 
 
-    public void enterusername(String email)
-    {
-        driverssk.findElement(amazonuser).sendKeys(email);
-    }
-
-    public void enterpassword(String pword)
-    {
-        driverssk.findElement(amazonpassword).sendKeys(pword);
-    }
+//    public void enterusername(String email)
+//    {
+//        driverssk.findElement(amazonuser).sendKeys(email);
+//    }
+//
+//    public void enterpassword(String pword)
+//    {
+//        driverssk.findElement(amazonpassword).sendKeys(pword);
+//    }
 
 
     public void clickByActionById(String val)

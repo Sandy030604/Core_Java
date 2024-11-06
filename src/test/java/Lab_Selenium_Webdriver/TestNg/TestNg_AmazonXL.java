@@ -2,39 +2,28 @@ package Lab_Selenium_Webdriver.TestNg;
 
 
 import Lab_Selenium_Webdriver.PomObject.Amazon_pom2;
-import com.beust.ah.A;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.AfterSuite;
+import org.testng.annotations.*;
 
-import javax.xml.crypto.Data;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Properties;
 
-public class TestNg_Amazon {
+public class TestNg_AmazonXL {
 
     WebDriver driver;
     Amazon_pom2 objsk;
     Properties prob;
-    String uname;
+    String uname;//7550010537
     String pword;
     String projectpath;
 
@@ -50,8 +39,8 @@ public class TestNg_Amazon {
 
         objsk.clickByActionByXpath("//*[@id='continue']");
 
-        objsk.clickByActionByXpath("//*[@id='ap_password']");
-        objsk.sendKeyByXpath("//*[@id='ap_password']",password1);
+        objsk.clickByActionByXpath("/html/body/div[1]/div[1]/div[2]/div/div[2]/div[2]/div[1]/form/div/div/div/div[1]/input[1]");
+        objsk.sendKeyByXpath("/html/body/div[1]/div[1]/div[2]/div/div[2]/div[2]/div[1]/form/div/div/div/div[1]/input[1]",password1);
         //objsk.enterpassword("aaradhana28");
         objsk.clickByActionByXpath("//*[@id='signInSubmit']");
         driver.manage().window().maximize();
@@ -180,21 +169,45 @@ public class TestNg_Amazon {
     @BeforeClass
 
     public void beforeClass() throws IOException {
-        projectpath=System.getProperty("user.dir");
-        prob=new Properties();
-        InputStream input=new FileInputStream(projectpath+"\\Amazon.properties");
-        prob.load(input);
-        uname=prob.getProperty("username");
-        pword=prob.getProperty("password");
+//        projectpath=System.getProperty("user.dir");
+//        prob=new Properties();
+//        InputStream input=new FileInputStream(projectpath+"\\Amazon.properties");
+//        prob.load(input);
+//        uname=prob.getProperty("username");
+//        pword=prob.getProperty("password");
+
+
+        FileInputStream sk=new FileInputStream("C:\\Users\\santhosh.krishnan\\eclipse-workspace\\Demo_session_1\\AmazonnewXL1.xlsx");
+        XSSFWorkbook workbooks=new XSSFWorkbook(sk);
+        XSSFSheet sheet=workbooks.getSheet("Sheet1");
+
+
+        int noofrows=sheet.getPhysicalNumberOfRows();
+        System.out.println("No of rows:"+noofrows);
+
+        for(int i=0;i<noofrows;i++)
+        {
+            WebDriverManager.chromedriver().setup();//this is to set the chromeDriver which we want to use
+            driver = new ChromeDriver();
+            objsk=new Amazon_pom2(driver);
+            String url=sheet.getRow(i).getCell(0).getStringCellValue();
+            // driver.get("https://www.amazon.in/ap/signin?openid.pape.max_auth_age=900&openid.return_to=https%3A%2F%2Fwww.amazon.in%2Fgp%2Fyourstore%2Fhome%3Fpath%3D%252Fgp%252Fyourstore%252Fhome%26signIn%3D1%26useRedirectOnSuccess%3D1%26action%3Dsign-out%26ref_%3Dnav_AccountFlyout_signout&openid.assoc_handle=inflex&openid.mode=checkid_setup&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0");
+            driver.get(url);
+            int p=(int)sheet.getRow(i).getCell(1).getNumericCellValue();
+            uname=(String) sheet.getRow(i).getCell(1).getStringCellValue();
+            pword=sheet.getRow(i).getCell(2).getStringCellValue();
+        }
+
         System.out.println("username:"+uname);
         System.out.println("password:"+pword);
+
         WebDriverManager.chromedriver().setup();//this is to set the chromeDriver which we want to use
         driver = new ChromeDriver();
         objsk=new Amazon_pom2(driver);
-        String amazon_url=prob.getProperty("url");
+        //String amazon_url=prob.getProperty("url");
         // driver.get("https://www.amazon.in/ap/signin?openid.pape.max_auth_age=900&openid.return_to=https%3A%2F%2Fwww.amazon.in%2Fgp%2Fyourstore%2Fhome%3Fpath%3D%252Fgp%252Fyourstore%252Fhome%26signIn%3D1%26useRedirectOnSuccess%3D1%26action%3Dsign-out%26ref_%3Dnav_AccountFlyout_signout&openid.assoc_handle=inflex&openid.mode=checkid_setup&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0");
 //        Amazon_pom2 objsk=new Amazon_pom2(driver);
-        driver.get(amazon_url);
+       // driver.get(amazon_url);
 
     }
 
